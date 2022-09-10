@@ -2,10 +2,12 @@
 const container = $("#container");
 const winningCardEl = $(".winning-card");
 const resetbtnEl = $(".restart-btn");
-
+const cardHeaderEl = $(".card-heading"); 
+const cardScoreEl = $(".p-custom"); 
 
 // ****************** Global variables ******************//
 let isPlayer2Turn = false;
+let playerWinner = ""; 
 let winXCount = 0;
 let winOCount = 0;
 
@@ -22,7 +24,6 @@ function getLocalStorage(){
 }
 
 function clickXO (elementClicked) {
-
     if (elementClicked.textContent==="" && isPlayer2Turn === false){
         $(elementClicked).text("X");
         isPlayer2Turn = true;
@@ -33,8 +34,6 @@ function clickXO (elementClicked) {
     else{
         console.log("already taken")
     }
-
-
 }
 
 function checkWin() {
@@ -71,9 +70,11 @@ function endGame() {
     if (isPlayer2Turn === false) {
         console.log("player O wins");
         winOCount++;
+        playerWinner = "player2";
     } else {
         console.log("player X wins");
         winXCount++;
+        playerWinner = "player1";
     }
 
     localStorage.setItem("winOCount" , winOCount);
@@ -84,11 +85,23 @@ function endGame() {
 
 function endGameTie() {
     console.log("it's a tie")
+    playerWinner = "tie";
     displayEndCard();
 }
 
 function displayEndCard() { 
     winningCardEl.attr("style", "display:block")
+    // edit the winning card 
+    if (playerWinner === "player1"){
+        cardHeaderEl.text("Player X Wins!")
+    } else if (playerWinner === "player2") {
+        cardHeaderEl.text("Player O Wins!")
+    } else {
+        cardHeaderEl.text("It's a tie!")
+    }
+
+    cardScoreEl.text("Player X: " + winXCount + " | Player O: " + winOCount);
+
 }
 
 function playGame (event) { 
