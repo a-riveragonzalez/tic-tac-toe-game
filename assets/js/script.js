@@ -3,21 +3,20 @@ const container = $("#container");
 
 // ****************** Global variables ******************//
 let isPlayer2Turn = false;
-let winCount = 0;
-let loseCount = 0;
-const winningArray = [
-    [1, 2, 3], 
-    [4, 5, 6], 
-    [7, 8, 9], 
-    [1, 4, 7], 
-    [2, 5, 8], 
-    [3, 6, 9], 
-    [1, 5, 9], 
-    [3, 5, 7], 
-]
-
+let winXCount = 0;
+let winOCount = 0;
 
 // ********************* Functions ********************//
+function getLocalStorage(){
+  // if keys does not exist, make an empty slot in local storage
+  if (!localStorage.getItem("winXCount") || !localStorage.getItem("winOCount")) {
+    localStorage.setItem("winXCount", "0");
+    localStorage.setItem("winOCount", "0");
+  } else {
+    winXCount = localStorage.getItem("winXCount");
+    winOCount = localStorage.getItem("winOCount");
+  }
+}
 
 function clickXO (elementClicked) {
 
@@ -56,13 +55,24 @@ function checkWin() {
         (cell1 != "" && cell1 === cell5 && cell5 === cell9) ||
         (cell3 != "" && cell3 === cell5 && cell5 === cell7) 
     ) {
-        console.log("You win!")
-        // if isPlayer2Turn X wins, else O wins 
+        endGame();
     } else {
-        console.log("continue game")
-
+        console.log("continue game");
     }
 
+}
+
+function endGame() { 
+    if (isPlayer2Turn === false) {
+        console.log("player O wins");
+        winOCount++;
+    } else {
+        console.log("player X wins");
+        winXCount++;
+    }
+
+    localStorage.setItem("winOCount" , winOCount);
+    localStorage.setItem("winXCount" , winXCount);
 }
 
 function playGame (event) { 
@@ -74,4 +84,5 @@ function playGame (event) {
 }
 
 // ****************** Calling Functions ******************//
-container.on("click", "div", playGame)
+container.on("click", "div", playGame);
+getLocalStorage();
