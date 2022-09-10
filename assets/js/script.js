@@ -5,6 +5,16 @@ const container = $("#container");
 let isPlayer2Turn = false;
 let winCount = 0;
 let loseCount = 0;
+const winningArray = [
+    [1, 2, 3], 
+    [4, 5, 6], 
+    [7, 8, 9], 
+    [1, 4, 7], 
+    [2, 5, 8], 
+    [3, 6, 9], 
+    [1, 5, 9], 
+    [3, 5, 7], 
+]
 
 
 // ********************* Functions ********************//
@@ -26,9 +36,14 @@ function clickXO (elementClicked) {
 }
 
 function checkWin() {
-    // if three in a row, win message
-    // else continue game 
-    
+    if (){
+        // if three in a row, win message
+
+    } else {
+        // else continue game 
+
+    }
+
 }
 
 function playGame (event) { 
