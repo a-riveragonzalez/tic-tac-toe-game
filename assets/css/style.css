@@ -16,3 +16,10 @@ p {
 }
 
 /* ************* class selectors ************* */
+.p-custom {
+    font-size: 15px;
+}
+
+.winning-card {
+    display: none;
+}

@@ -1,5 +1,8 @@
 // ****************** Reference variables ******************//
 const container = $("#container");
+const winningCardEl = $(".winning-card");
+const resetbtnEl = $(".restart-btn");
+
 
 // ****************** Global variables ******************//
 let isPlayer2Turn = false;
@@ -56,6 +59,8 @@ function checkWin() {
         (cell3 != "" && cell3 === cell5 && cell5 === cell7) 
     ) {
         endGame();
+    } else if (cell1!="" && cell2!="" && cell3!="" && cell4!="" && cell5!="" && cell6!="" && cell7!="" && cell8!="" && cell9!=""){
+        endGameTie();
     } else {
         console.log("continue game");
     }
@@ -73,6 +78,17 @@ function endGame() {
 
     localStorage.setItem("winOCount" , winOCount);
     localStorage.setItem("winXCount" , winXCount);
+
+    displayEndCard();
+}
+
+function endGameTie() {
+    console.log("it's a tie")
+    displayEndCard();
+}
+
+function displayEndCard() { 
+    winningCardEl.attr("style", "display:block")
 }
 
 function playGame (event) { 
@@ -85,4 +101,7 @@ function playGame (event) {
 
 // ****************** Calling Functions ******************//
 container.on("click", "div", playGame);
+resetbtnEl.on("click", function(){
+    location.reload();
+})
 getLocalStorage();
