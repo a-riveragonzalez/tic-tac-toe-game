@@ -36,13 +36,24 @@ function clickXO (elementClicked) {
 }
 
 function checkWin() {
-    if (){
-        // if three in a row, win message
+    const cell1 = $("#1")[0].firstElementChild.textContent
+    const cell2 = $("#2")[0].firstElementChild.textContent
+    const cell3 = $("#3")[0].firstElementChild.textContent
+    const cell4 = $("#4")[0].firstElementChild.textContent
+    const cell5 = $("#5")[0].firstElementChild.textContent
+    const cell6 = $("#6")[0].firstElementChild.textContent
+    const cell7 = $("#7")[0].firstElementChild.textContent
+    const cell8 = $("#8")[0].firstElementChild.textContent
+    const cell9 = $("#9")[0].firstElementChild.textContent
 
-    } else {
-        // else continue game 
 
-    }
+    // if (){
+    //     console.log("You win!")
+    //     // if isPlayer2Turn X wins, else O wins 
+    // } else {
+    //     console.log("continue game")
+
+    // }
 
 }
 
