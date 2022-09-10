@@ -1,6 +1,16 @@
-// Reference variables
+// ****************** Reference variables ******************//
+const container = $("#container");
+
+// ****************** Global variables ******************//
+let winCount = 0;
+let loseCount = 0;
 
 
-// Global variables
+// ********************* Functions ********************//
+function clickXO (event) { 
+    console.log(event);
+    
+ }
 
-
+// ****************** Calling Functions ******************//
+container.on("click", "div", clickXO)

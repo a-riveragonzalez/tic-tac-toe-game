@@ -1,16 +1,18 @@
-/* defining variables */
+/* ************* defining variables ************* */
 :root {
 
 }
 
-/* universal selector */
+/* ************* universal selector ************* */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-/* element selectors */
+/* ************* element selectors ************* */
+p {
+    font-size: 80px;
+}
 
-
-/* class selectors */
+/* ************* class selectors ************* */
