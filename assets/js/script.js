@@ -2,42 +2,42 @@
 const container = $("#container");
 
 // ****************** Global variables ******************//
+let isPlayer2Turn = false;
 let winCount = 0;
 let loseCount = 0;
 
 
 // ********************* Functions ********************//
 
-// if click, add x
-// if click, add o 
 function clickXO (elementClicked) {
-    if (elementClicked.textContent===""){
+
+    if (elementClicked.textContent==="" && isPlayer2Turn === false){
         $(elementClicked).text("X");
-    } else{
+        isPlayer2Turn = true;
+    } else if (elementClicked.textContent==="" && isPlayer2Turn === true){
+        $(elementClicked).text("O");
+        isPlayer2Turn = false;
+    }
+    else{
         console.log("already taken")
     }
 
-    // $(elementClicked).text("X");
-    // console.log(elementClicked.textContent);
-}
 
+}
 
 function checkWin() {
     // if three in a row, win message
     // else continue game 
+    
 }
 
 function playGame (event) { 
     const elementClicked = event.currentTarget.firstElementChild;
 
     clickXO(elementClicked);
-    // if (elementClicked)
-    // $(elementClicked).text("X");
-    // console.log(elementClicked.textContent);
 
-    // clickx or clicko
-    // check if win 
- }
+    checkWin();
+}
 
 // ****************** Calling Functions ******************//
 container.on("click", "div", playGame)
