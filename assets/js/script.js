@@ -36,24 +36,32 @@ function clickXO (elementClicked) {
 }
 
 function checkWin() {
-    const cell1 = $("#1")[0].firstElementChild.textContent
-    const cell2 = $("#2")[0].firstElementChild.textContent
-    const cell3 = $("#3")[0].firstElementChild.textContent
-    const cell4 = $("#4")[0].firstElementChild.textContent
-    const cell5 = $("#5")[0].firstElementChild.textContent
-    const cell6 = $("#6")[0].firstElementChild.textContent
-    const cell7 = $("#7")[0].firstElementChild.textContent
-    const cell8 = $("#8")[0].firstElementChild.textContent
-    const cell9 = $("#9")[0].firstElementChild.textContent
+    const cell1 = $("#1")[0].firstElementChild.textContent;
+    const cell2 = $("#2")[0].firstElementChild.textContent;
+    const cell3 = $("#3")[0].firstElementChild.textContent;
+    const cell4 = $("#4")[0].firstElementChild.textContent;
+    const cell5 = $("#5")[0].firstElementChild.textContent;
+    const cell6 = $("#6")[0].firstElementChild.textContent;
+    const cell7 = $("#7")[0].firstElementChild.textContent;
+    const cell8 = $("#8")[0].firstElementChild.textContent;
+    const cell9 = $("#9")[0].firstElementChild.textContent;
 
+    if (
+        (cell1 != "" && cell1 === cell2 && cell2 === cell3) ||
+        (cell4 != "" && cell4 === cell5 && cell5 === cell6) ||
+        (cell7 != "" && cell7 === cell8 && cell8 === cell9) ||
+        (cell1 != "" && cell1 === cell4 && cell4 === cell7) ||
+        (cell2 != "" && cell2 === cell5 && cell5 === cell8) ||
+        (cell3 != "" && cell3 === cell6 && cell6 === cell9) ||
+        (cell1 != "" && cell1 === cell5 && cell5 === cell9) ||
+        (cell3 != "" && cell3 === cell5 && cell5 === cell7) 
+    ) {
+        console.log("You win!")
+        // if isPlayer2Turn X wins, else O wins 
+    } else {
+        console.log("continue game")
 
-    // if (){
-    //     console.log("You win!")
-    //     // if isPlayer2Turn X wins, else O wins 
-    // } else {
-    //     console.log("continue game")
-
-    // }
+    }
 
 }
 
