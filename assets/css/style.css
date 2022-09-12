@@ -11,15 +11,17 @@
   }
   
 /* ************* element selectors ************* */
-p {
-    font-size: 80px;
-}
 
 /* ************* class selectors ************* */
-.p-custom {
-    font-size: 15px;
+.container p {
+    font-size: 80px;
 }
 
 .winning-card {
     display: none;
+}
+
+/* ************* id selectors ************* */
+#p-custom {
+    font-size: 15px;
 }

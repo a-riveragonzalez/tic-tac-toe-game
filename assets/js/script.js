@@ -1,10 +1,12 @@
 // ****************** Reference variables ******************//
 const container = $("#container");
+const titleEl = $("#title");
+const whoTurnEl = $("#whos-turn"); // todo make a function for this who turn, then game over 
 const winningCardEl = $(".winning-card");
 const resetbtnEl = $(".restart-btn");
 const clearScorebtnEl = $(".clear-btn");
 const cardHeaderEl = $(".card-heading"); 
-const cardScoreEl = $(".p-custom"); 
+const cardScoreEl = $("#p-custom"); 
 
 // ****************** Global variables ******************//
 let isPlayer2Turn = false;
@@ -60,9 +62,12 @@ function checkWin() {
     ) {
         endGame();
     } else if (cell1!="" && cell2!="" && cell3!="" && cell4!="" && cell5!="" && cell6!="" && cell7!="" && cell8!="" && cell9!=""){
-        endGameTie();
+        console.log("it's a tie")
+        displayEndCard();
     } else {
         console.log("continue game");
+        // todo change who's turn el 
+        (isPlayer2Turn === false) ? whoTurnEl.text("X turn"): whoTurnEl.text("O turn");
     }
 
 }
@@ -84,15 +89,13 @@ function endGame() {
     displayEndCard();
 }
 
-function endGameTie() {
-    console.log("it's a tie")
-    displayEndCard();
-}
-
 function displayEndCard() { 
     // disable the buttons after game
     const nums = "0123456789".split("");
     nums.forEach(element => $(`#${element}`).prop("disabled",true));
+
+    whoTurnEl.text("Game Over");
+    // todo change whos turn el to game over 
 
     winningCardEl.attr("style", "display:block")
     // edit the winning card 
@@ -118,6 +121,9 @@ function playGame (event) {
 
 // ****************** Calling Functions ******************//
 container.on("click", "div", playGame);
+titleEl.on("click", function(){
+    location.reload();
+})
 resetbtnEl.on("click", function(){
     location.reload();
 })
