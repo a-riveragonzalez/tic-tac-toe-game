@@ -90,6 +90,10 @@ function endGameTie() {
 }
 
 function displayEndCard() { 
+    // disable the buttons after game
+    const nums = "0123456789".split("");
+    nums.forEach(element => $(`#${element}`).prop("disabled",true));
+
     winningCardEl.attr("style", "display:block")
     // edit the winning card 
     if (playerWinner === "player1"){
