@@ -1,7 +1,7 @@
 // ****************** Reference variables ******************//
 const container = $("#container");
 const titleEl = $("#title");
-const whoTurnEl = $("#whos-turn"); // todo make a function for this who turn, then game over 
+const whoTurnEl = $("#whos-turn");
 const winningCardEl = $(".winning-card");
 const resetbtnEl = $(".restart-btn");
 const clearScorebtnEl = $(".clear-btn");
@@ -66,7 +66,7 @@ function checkWin() {
         displayEndCard();
     } else {
         console.log("continue game");
-        // todo change who's turn el 
+        // change who's turn el 
         (isPlayer2Turn === false) ? whoTurnEl.text("X turn"): whoTurnEl.text("O turn");
     }
 
@@ -94,8 +94,8 @@ function displayEndCard() {
     const nums = "0123456789".split("");
     nums.forEach(element => $(`#${element}`).prop("disabled",true));
 
+    // change whos turn el to game over 
     whoTurnEl.text("Game Over");
-    // todo change whos turn el to game over 
 
     winningCardEl.attr("style", "display:block")
     // edit the winning card 
@@ -121,16 +121,20 @@ function playGame (event) {
 
 // ****************** Calling Functions ******************//
 container.on("click", "div", playGame);
+
 titleEl.on("click", function(){
     location.reload();
 })
+
 resetbtnEl.on("click", function(){
     location.reload();
 })
+
 clearScorebtnEl.on("click", function(){
     localStorage.setItem("winOCount" , "0");
     localStorage.setItem("winXCount" , "0");
 
     cardScoreEl.text("Player X: 0 | Player O: 0");
 })
+
 getLocalStorage();
