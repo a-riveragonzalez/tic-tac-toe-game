@@ -2,6 +2,7 @@
 const container = $("#container");
 const winningCardEl = $(".winning-card");
 const resetbtnEl = $(".restart-btn");
+const clearScorebtnEl = $(".clear-btn");
 const cardHeaderEl = $(".card-heading"); 
 const cardScoreEl = $(".p-custom"); 
 
@@ -85,7 +86,6 @@ function endGame() {
 
 function endGameTie() {
     console.log("it's a tie")
-    playerWinner = "tie";
     displayEndCard();
 }
 
@@ -120,5 +120,11 @@ function playGame (event) {
 container.on("click", "div", playGame);
 resetbtnEl.on("click", function(){
     location.reload();
+})
+clearScorebtnEl.on("click", function(){
+    localStorage.setItem("winOCount" , "0");
+    localStorage.setItem("winXCount" , "0");
+
+    cardScoreEl.text("Player X: 0 | Player O: 0");
 })
 getLocalStorage();
